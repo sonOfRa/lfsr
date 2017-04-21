@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -9,7 +10,7 @@
 
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
-    
+
     <organization>
         <!-- Used as the 'Vendor' for JNLP generation -->
         <name>Uni Bremen</name>
@@ -18,6 +19,8 @@
     <properties>
         <slf4j.version>1.7.25</slf4j.version>
         <log4j.version>1.2.17</log4j.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <build>
@@ -25,29 +28,24 @@
         <finalName>lfsr</finalName>
 
         <plugins>
-
             <plugin>
                 <groupId>com.zenjava</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>8.8.3</version>
                 <configuration>
-
                     <mainClass>de.slevermann.lfsr.MainApp</mainClass>
-
                     <!-- only required if signing the jar file -->
                     <keyStoreAlias>example-user</keyStoreAlias>
                     <keyStorePassword>example-password</keyStorePassword>
                     <allPermissions>true</allPermissions>
-
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 
 
     <dependencies>
-    
+
         <!-- MigLayout -->
 
         <dependency>
@@ -87,6 +85,8 @@
             <version>${log4j.version}</version>
         </dependency>
 
+        <!-- The rest -->
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -99,5 +99,4 @@
             <version>RELEASE</version>
         </dependency>
     </dependencies>
-
 </project>
