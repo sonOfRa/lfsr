@@ -66,6 +66,14 @@ public class FixedBitSetTest {
         FixedBitSet bitSet = new FixedBitSet("1234");
     }
 
+    @Test
+    public void testCopyConstructor() {
+        FixedBitSet bitSet = new FixedBitSet(b00000);
+        Assert.assertEquals((Object) bitSet, b00000, "Equality should hold for copy constructor");
+        bitSet.setBit(1);
+        Assert.assertNotEquals(bitSet, b00000, "Modifications on copy should not reflect in the original");
+    }
+
     @Test(expectedExceptions = IndexOutOfBoundsException.class)
     public void testSetBitNegative() throws Exception {
         b00000.setBit(-1);

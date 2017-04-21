@@ -33,6 +33,11 @@ public class FixedBitSet implements Iterable<Boolean> {
         this.state = new BigInteger(binary, 2);
     }
 
+    public FixedBitSet(FixedBitSet fixedBitSet) {
+        this.size = fixedBitSet.size;
+        this.state = fixedBitSet.state;
+    }
+
     public BitSetIterator iterator() {
         return new BitSetIterator(this);
     }
