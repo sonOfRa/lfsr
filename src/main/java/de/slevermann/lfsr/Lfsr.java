@@ -1,5 +1,6 @@
 package de.slevermann.lfsr;
 
+import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Set;
 
@@ -11,15 +12,15 @@ import java.util.Set;
  */
 public class Lfsr {
 
-    private int size;
+    private final int size;
 
-    private Set<Integer> taps;
+    private final Set<Integer> taps;
 
     private FixedBitSet state;
 
-    private FixedBitSet initialState;
+    private final FixedBitSet initialState;
 
-    private Deque<Boolean> outputBits;
+    private final Deque<Boolean> outputBits;
 
     public Lfsr(String initialState, Set<Integer> taps) {
         this(new FixedBitSet(initialState), taps);
@@ -38,6 +39,8 @@ public class Lfsr {
         this.initialState = initialState;
         this.state = new FixedBitSet(initialState);
         this.size = state.getSize();
+        this.taps = taps;
+        this.outputBits = new ArrayDeque<>();
     }
 
     /**
@@ -96,5 +99,15 @@ public class Lfsr {
         } else {
             for (int i = 0; i < -n; i++) step();
         }
+    }
+
+    /**
+     * Resets the LFSR to its initial state.
+     *
+     * Clears all output bits and reverts the state to the original state.
+     */
+    public void reset() {
+        this.state = new FixedBitSet(initialState);
+        this.outputBits.clear();
     }
 }
